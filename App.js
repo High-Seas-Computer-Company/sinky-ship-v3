@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Button, ScrollView } from 'react-native';
 import { NativeRouter, Route, Link } from 'react-router-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+
 // import component dependancies
 import Start from './src/components/start/Start.js';
 import ShipPlacement from './src/components/ship-placement/Ship-placement.js';
@@ -25,28 +26,29 @@ export default function App() {
 
   return (
     <NativeRouter>
-      <SafeAreaView style={styles.random} />
-      <SafeAreaView style={styles.container}>
-        <ScrollView style={styles.scrollView} scrollEnabled={false}>
-          <Button
-            onPress={newGame}
-            title="New Game"
-            color="#841584"
-            accessibilityLabel="Start a new game of Sinky Ship"
-          />
-          <Route exact path="/" component={Start} />
-          <Route path="/ship-placement" component={ShipPlacement} />
-          <Route path="/game-parle" component={GameParle} />
-          <Route path="/game-over" component={GameOver} />
-        </ScrollView>
+      <SafeAreaView style={styles.safeArea}>
+        <View style={styles.container}>
+          <ScrollView scrollEnabled={false}>
+            <Button
+              onPress={newGame}
+              title="New Game"
+              color="#841584"
+              accessibilityLabel="Start a new game of Sinky Ship"
+            />
+            <Route exact path="/" component={Start} />
+            <Route path="/ship-placement" component={ShipPlacement} />
+            <Route path="/game-parle" component={GameParle} />
+            <Route path="/game-over" component={GameOver} />
+          </ScrollView>
+        </View>
       </SafeAreaView>
     </NativeRouter >
   );
 }
 
 const styles = StyleSheet.create({
-  random: {
-    flex: 0,
+  safeArea: {
+    flex: 1,
     backgroundColor: '#b9ced5',
   },
   container: {
@@ -54,9 +56,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 5,
+    paddingHorizontal: 5,
   },
-  // scrollView: {
-  //   scrollEnabled: false,
-  // }
 });
