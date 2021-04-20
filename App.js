@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, ScrollView } from 'react-native';
 import { NativeRouter, Route, Link } from 'react-router-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -27,16 +27,18 @@ export default function App() {
     <NativeRouter>
       <SafeAreaView style={styles.random} />
       <SafeAreaView style={styles.container}>
-        <Button
-          onPress={newGame}
-          title="New Game"
-          color="#841584"
-          accessibilityLabel="Start a new game of Sinky Ship"
-        />
-        <Route exact path="/" component={Start} />
-        <Route path="/ship-placement" component={ShipPlacement} />
-        <Route path="/game-parle" component={GameParle} />
-        <Route path="/game-over" component={GameOver} />
+        <ScrollView style={styles.scrollView} scrollEnabled={false}>
+          <Button
+            onPress={newGame}
+            title="New Game"
+            color="#841584"
+            accessibilityLabel="Start a new game of Sinky Ship"
+          />
+          <Route exact path="/" component={Start} />
+          <Route path="/ship-placement" component={ShipPlacement} />
+          <Route path="/game-parle" component={GameParle} />
+          <Route path="/game-over" component={GameOver} />
+        </ScrollView>
       </SafeAreaView>
     </NativeRouter >
   );
@@ -52,5 +54,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 5,
   },
+  // scrollView: {
+  //   scrollEnabled: false,
+  // }
 });
