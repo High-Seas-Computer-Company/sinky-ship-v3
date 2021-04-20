@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Alert } from 'react-native';
 import { FlatGrid } from 'react-native-super-grid';
+import { Ionicons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 let grid = function () {
   let gridArray = [];
@@ -44,6 +46,26 @@ export default function Board() {
           </TouchableOpacity>
         )}
       />
+      <View style={styles.arrowBox}>
+        {/* <Text>N</Text> */}
+        <TouchableOpacity>
+          <AntDesign name="caretup" size={42} color="black" />
+        </TouchableOpacity>
+        <View style={styles.arrows}>
+          {/* <Text>W</Text> */}
+          <TouchableOpacity>
+            <AntDesign name="caretleft" size={42} color="black" style={{ marginRight: 30 }} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <AntDesign name="caretright" size={42} color="black" />
+          </TouchableOpacity>
+          {/* <Text>E</Text> */}
+        </View>
+        <TouchableOpacity>
+          <AntDesign name="caretdown" size={42} color="black" />
+        </TouchableOpacity>
+        {/* <Text>S</Text> */}
+      </View>
     </>
   );
 }
@@ -71,4 +93,17 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#fff',
   },
+  arrows: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly'
+  },
+  arrowBox: {
+    backgroundColor: '#D29495',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+    marginTop: 20,
+    marginLeft: 20,
+    borderRadius: 69,
+  }
 });
