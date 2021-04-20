@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Alert } from 'react-native';
 import { NativeRouter, Route, Link } from "react-router-native";
+import Board from '../gameboard/gameboard.js';
 
 export default function ShipPlacement() {
   return (
@@ -13,7 +14,7 @@ export default function ShipPlacement() {
       >
         <Text>Back home</Text>
       </Link>
-
+      <Board />
 
     </View >
   );
