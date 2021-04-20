@@ -45,7 +45,7 @@ export default function App() {
 const styles = StyleSheet.create({
   random: {
     flex: 0,
-    backgroundColor: 'cyan',
+    backgroundColor: '#b9ced5',
   },
   container: {
     flex: 1,
