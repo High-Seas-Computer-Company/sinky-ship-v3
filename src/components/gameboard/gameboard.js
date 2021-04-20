@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Alert } from 'react-native';
 import { FlatGrid } from 'react-native-super-grid';
 import { Ionicons } from '@expo/vector-icons';
@@ -25,7 +25,7 @@ function targetConverter(int) {
 }
 
 export default function Board() {
-  const [items, setItems] = React.useState(grid);
+  const [items, setItems] = useState(grid);
 
   return (
     <>
@@ -47,25 +47,27 @@ export default function Board() {
         )}
       />
       <View style={styles.arrowBox}>
-        {/* <Text>N</Text> */}
         <TouchableOpacity>
           <AntDesign name="caretup" size={42} color="black" />
         </TouchableOpacity>
         <View style={styles.arrows}>
-          {/* <Text>W</Text> */}
           <TouchableOpacity>
             <AntDesign name="caretleft" size={42} color="black" style={{ marginRight: 30 }} />
           </TouchableOpacity>
           <TouchableOpacity>
             <AntDesign name="caretright" size={42} color="black" />
           </TouchableOpacity>
-          {/* <Text>E</Text> */}
         </View>
         <TouchableOpacity>
           <AntDesign name="caretdown" size={42} color="black" />
         </TouchableOpacity>
-        {/* <Text>S</Text> */}
       </View>
+      {/* <FlatGrid
+      itemDimension={10}
+      data={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
+      style={styles.miniGrid}
+      renderItem={() => (<View style={{ borderWidth: .25, borderColor: 'black' }} />)}
+      /> */}
     </>
   );
 }
@@ -105,5 +107,11 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginLeft: 20,
     borderRadius: 69,
+  },
+  miniGrid: {
+    backgroundColor: 'bisque',
+    height: 70,
+    // borderWidth: .25,
+    // borderColor: 'black',
   }
 });
