@@ -4,10 +4,22 @@ import { FlatGrid } from 'react-native-super-grid';
 
 let grid = function () {
   let gridArray = [];
-  for (let i = 1; i <= 100; i++) {
-    gridArray.push({ name: i, code: '#3498db' },)
+  for (let i = 0; i <= 99; i++) {
+    gridArray.push({ name: i, code: '#286c9c' },)
   }
   return gridArray;
+}
+
+function targetConverter(int){
+  let letterAxis = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
+
+  let letterIndex = Math.floor(int/10);
+  let letter = letterAxis[letterIndex];
+  let numeral = int%10;
+  let target = letter + `${numeral}`;
+
+  console.log(target);
+  Alert.alert(`Clicked item ${target}`)
 }
 
 export default function Board() {
@@ -23,7 +35,7 @@ export default function Board() {
         // fixed
         spacing={0}
         renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => Alert.alert(`Clicked item ${item.name}`)}>
+          <TouchableOpacity onPress={() => targetConverter(item.name)}>
             <View style={[styles.itemContainer, { backgroundColor: item.code }]}>
               {/* <Text style={styles.itemName}>{item.name}</Text>
             <Text style={styles.itemCode}>{item.code}</Text> */}
