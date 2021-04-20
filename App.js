@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
-import { NativeRouter, Route, Link } from "react-router-native";
+import { NativeRouter, Route, Link } from 'react-router-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // import component dependancies
