@@ -10,16 +10,16 @@ let grid = function () {
   return gridArray;
 }
 
-function targetConverter(int){
+function targetConverter(int) {
   let letterAxis = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
 
-  let letterIndex = Math.floor(int/10);
+  let letterIndex = Math.floor(int / 10);
   let letter = letterAxis[letterIndex];
-  let numeral = int%10;
+  let numeral = int % 10;
   let target = letter + `${numeral}`;
 
   console.log(target);
-  Alert.alert(`Clicked item ${target}`)
+  // Alert.alert(`Clicked item ${target}`)
 }
 
 export default function Board() {
@@ -31,6 +31,7 @@ export default function Board() {
         itemDimension={40}
         data={items}
         style={styles.gridView}
+        scrollEnabled={false}
         // staticDimension={300}
         // fixed
         spacing={0}
