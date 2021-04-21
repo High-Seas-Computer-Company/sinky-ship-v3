@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, Button, ScrollView } from 'react-native';
 import { NativeRouter, Route, Link } from 'react-router-native';
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
+import { Provider } from 'react-redux';
+import store from './src/store/index.js';
 
 
 // import component dependancies
@@ -12,7 +14,7 @@ import GameParle from './src/components/gameplay/Gameplay.js';
 import GameOver from './src/components/gameover/Gameover.js';
 
 // socket stuffy stuff
-import { startSocketIO, startGame } from './src/components/socket-stuff/socket.js';
+import { startSocketIO, startGame, setup1Listener, guessListener, gameOverListener } from './src/components/socket-stuff/socket.js';
 
 export default function App() {
 
@@ -20,28 +22,33 @@ export default function App() {
     startSocketIO();
   }, []);
 
+  useEffect(() => {
+    setup1Listener();
+  }, []);
+
   const newGame = () => {
     startGame();
-    console.log('new game request should have fired...');
   };
 
   return (
       <NativeRouter>
         <SafeAreaView style={styles.safeArea}>
           <View style={styles.container}>
-            <ScrollView scrollEnabled={false}>
-              <HeaderComponent newGame={newGame} />
-              {/* <Button
-                onPress={newGame}
-                title="New Game"
-                color="#841584"
-                accessibilityLabel="Start a new game of Sinky Ship"
-              /> */}
-              <Route exact path="/" component={Start} />
-              <Route path="/ship-placement" component={ShipPlacement} />
-              <Route path="/game-parle" component={GameParle} />
-              <Route path="/game-over" component={GameOver} />
-            </ScrollView>
+            <Provider store={store}>
+              <ScrollView scrollEnabled={false}>
+                <HeaderComponent newGame={newGame} />
+                {/* <Button
+                  onPress={newGame}
+                  title="New Game"
+                  color="#841584"
+                  accessibilityLabel="Start a new game of Sinky Ship"
+                /> */}
+                <Route exact path="/" component={Start} />
+                <Route path="/ship-placement" component={ShipPlacement} />
+                <Route path="/game-parle" component={GameParle} />
+                <Route path="/game-over" component={GameOver} />
+              </ScrollView>
+            </Provider>
           </View>
         </SafeAreaView>
       </NativeRouter >

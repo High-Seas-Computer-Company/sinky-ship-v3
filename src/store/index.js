@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import GameboardReducer from './gameboard.slice.js';
 
 let reducers = {
-  gameboard: GameboardReducer,
+  gameboards: GameboardReducer,
 };
 
 const store = configureStore({ reducer: reducers });
