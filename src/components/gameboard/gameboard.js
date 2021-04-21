@@ -9,7 +9,7 @@ import Compass from '../compass/Compass.js';
 let grid = function () {
   let gridArray = [];
   for (let i = 0; i <= 99; i++) {
-    gridArray.push({ name: i },)
+    gridArray.push({ name: i, state: 'water' },)
   }
   return gridArray;
 }
