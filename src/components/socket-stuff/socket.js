@@ -1,5 +1,5 @@
 import socketIO from 'socket.io-client';
-const serverUrl = 'https://sinky-ship.herokuapp.com/sinky-ship';
+// const serverUrl = 'https://sinky-ship.herokuapp.com/sinky-ship';
 
 const socket = socketIO(serverUrl, {
   transports: ['websocket'],

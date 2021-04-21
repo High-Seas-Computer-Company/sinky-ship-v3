@@ -20,7 +20,7 @@ export const ShipPlacement = (props) => {
     <View style={styles.container}>
       <Text>Ship Placement</Text>
       <Text>Ready to placey ships?</Text>
-      <Board />
+      <Board socket={props.socket}/>
       <If condition={props.shipsPlaced === 0}>
         <Text>Spanish Galleon</Text>
       </If>

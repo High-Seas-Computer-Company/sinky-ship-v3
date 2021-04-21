@@ -14,26 +14,39 @@ import ShipPlacement from './src/components/ship-placement/Ship-placement.js';
 import GameParle from './src/components/gameplay/Gameplay.js';
 import GameOver from './src/components/gameover/Gameover.js';
 
-const serverUrl = 'https://sinky-ship.herokuapp.com/sinky-ship';
+// const serverUrl = 'https://sinky-ship.herokuapp.com/sinky-ship';
+const serverUrl = 'http://localhost:3000';
 
 export default function App() {
-  let [socket, setSocket] = useState('');
+  let [socket, setSocket] = useState(io.connect(serverUrl, {
+    transports: ['websocket'],
+    jsonp: false
+  }));
 
   useEffect(() => {
-    socket = io.connect(serverUrl, {
-      transports: ['websocket'],
-      jsonp: false
-    });
+    // socket = io.connect(serverUrl, {
+    //   transports: ['websocket'],
+    //   jsonp: false
+    // });
+
+    // setSocket(client);
+
     socket.on('game-setup1', (payload) => {
+      console.log('game started');
       dispatch(initialBoards(payload));
       // dispatch(shipPlacement(payload, payload['Spanish Galleon']));
     });
+    socket.on('guess', (payload) => {
+      console.log('this is guess payload', payload);
+    });
+
   }, []);
 
-
+  console.log('this is socket', socket);
 
   const newGame = () => {
     startNewGame();
+    socket.emit('new-game');
   };
 
   return (
@@ -55,6 +68,7 @@ export default function App() {
                 )} />
                 <Route path="/game-parle" component={GameParle} />
                 <Route path="/game-over" component={GameOver} />
+                {/* <ShipPlacement socket={socket} /> */}
               </ScrollView>
           </View>
         </SafeAreaView>

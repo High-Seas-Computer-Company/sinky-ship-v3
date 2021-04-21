@@ -21,6 +21,7 @@ export const loadNewGameboards = (socket) => {
 };
 
 export const startNewGame = (socket) => {
+  console.log('just emmitted new game');
   return (dispatch) => {
     socket.emit('new-game');
   };
