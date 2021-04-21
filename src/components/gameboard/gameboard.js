@@ -9,7 +9,7 @@ import Compass from '../compass/Compass.js';
 let grid = function () {
   let gridArray = [];
   for (let i = 0; i <= 99; i++) {
-    gridArray.push({ name: i, state: 'water' },)
+    gridArray.push({ name: i, hit: false, miss: false },)
   }
   return gridArray;
 }
@@ -27,12 +27,16 @@ function targetConverter(int) {
   // Alert.alert(`Clicked item ${target}`)
 }
 
-function taskRunner(item) {
+function taskRunner(item, props) {
 
   console.log('item: ', item);
-  return targetConverter(item.name);
+  let targetValue = targetConverter(item.name);
+  // console.log('this is props.socket', props.socket);
+  
+  props.socket.emit('response', targetValue);
+  return targetValue;
 }
-export default function Board() {
+export default function Board(props) {
   // console.log('props: ', props);
   const [items, setItems] = useState(grid);
   let [colour, setColour] = useState(false);
@@ -53,7 +57,7 @@ export default function Board() {
           <TouchableHighlight
             underlayColor="#B9CED5"
             activeOpacity={0.2}
-            onPress={() => taskRunner(item)}>
+            onPress={() => taskRunner(item, props)}>
 
             {/*   < View style={[styles.itemContainer, { backgroundColor: item.code }]}>
                    {/* <Text style={styles.itemName}>{item.name}</Text>
