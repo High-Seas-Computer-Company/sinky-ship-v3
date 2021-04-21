@@ -7,15 +7,8 @@ export default function ShipPlacement() {
   return (
     <View style={styles.container}>
       <Text>Ship Placement</Text>
-
       <Text>Ready to placey ships?</Text>
-      <Link
-        to="/"
-      >
-        <Text>Back home</Text>
-      </Link>
       <Board />
-
     </View >
   );
 }
