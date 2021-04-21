@@ -9,7 +9,7 @@ import Compass from '../compass/Compass.js';
 let grid = function () {
   let gridArray = [];
   for (let i = 0; i <= 99; i++) {
-    gridArray.push({ name: i, code: '#286c9c' },)
+    gridArray.push({ name: i },)
   }
   return gridArray;
 }
@@ -23,11 +23,20 @@ function targetConverter(int) {
   let target = letter + `${numeral}`;
 
   console.log(target);
+  return target;
   // Alert.alert(`Clicked item ${target}`)
 }
 
+function taskRunner(item) {
+
+  console.log('item: ', item);
+  return targetConverter(item.name);
+}
 export default function Board() {
+  // console.log('props: ', props);
   const [items, setItems] = useState(grid);
+  let [colour, setColour] = useState(false);
+  let [bgColour, setBgColour] = useState('#286c9c');
 
   return (
     <>
@@ -41,12 +50,21 @@ export default function Board() {
         // fixed
         spacing={0}
         renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => targetConverter(item.name)}>
-            <View style={[styles.itemContainer, { backgroundColor: item.code }]}>
-              {/* <Text style={styles.itemName}>{item.name}</Text>
-            <Text style={styles.itemCode}>{item.code}</Text> */}
-            </View>
+          <TouchableOpacity
+
+            onPress={() => taskRunner(item)}>
+
+            {/*   < View style={[styles.itemContainer, { backgroundColor: item.code }]}>
+                   {/* <Text style={styles.itemName}>{item.name}</Text>
+             <Text style={styles.itemCode}>{item.code}</Text> 
+             </View> */}
+            < View
+              className={item.name}
+              style={[styles.itemContainer, { backgroundColor: bgColour }]}
+            />
+
           </TouchableOpacity>
+
         )}
       />
       <Compass />
@@ -72,6 +90,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: '600',
   },
+
   itemCode: {
     fontWeight: '600',
     fontSize: 12,
