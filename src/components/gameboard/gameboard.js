@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Alert } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, TouchableHighlight, Alert } from 'react-native';
 import { Button } from 'react-native-elements';
 import { FlatGrid } from 'react-native-super-grid';
 // import { Ionicons } from '@expo/vector-icons';
@@ -50,8 +50,9 @@ export default function Board() {
         // fixed
         spacing={0}
         renderItem={({ item }) => (
-          <TouchableOpacity
-
+          <TouchableHighlight
+            underlayColor="#B9CED5"
+            activeOpacity={0.2}
             onPress={() => taskRunner(item)}>
 
             {/*   < View style={[styles.itemContainer, { backgroundColor: item.code }]}>
@@ -63,7 +64,7 @@ export default function Board() {
               style={[styles.itemContainer, { backgroundColor: bgColour }]}
             />
 
-          </TouchableOpacity>
+          </TouchableHighlight>
 
         )}
       />
