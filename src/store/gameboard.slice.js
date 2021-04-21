@@ -9,7 +9,8 @@ const gameboardSlice = createSlice({
   },
   reducers: {
     gameStart(state, action) {
-
+      state.playerBoard = action.payload.playerBoard;
+      state.computerBoard = action.payload.computerBoard;
     },
     shipSetup(state, action) {
 

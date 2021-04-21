@@ -2,7 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, Alert } from 'react-native';
 import { NativeRouter, Route, Link, TouchableOpacity } from "react-router-native";
 
+
 export default function Start() {
+
+
   return (
     <View style={styles.container}>
       <Text>Sinky Ship Mobile</Text>
