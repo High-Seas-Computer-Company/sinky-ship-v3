@@ -54,22 +54,15 @@ export default function App() {
       <NativeRouter>
         <SafeAreaView style={styles.safeArea}>
           <View style={styles.container}>
-              <ScrollView scrollEnabled={false}>
-                <HeaderComponent newGame={newGame} />
-                {/* <Button
-                  onPress={newGame}
-                  title="New Game"
-                  color="#841584"
-                  accessibilityLabel="Start a new game of Sinky Ship"
-                /> */}
-                <Route exact path="/" component={Start} />
-                <Route path="/ship-placement" render={(props) => (
-                  <ShipPlacement {...props} socket={socket} />
-                )} />
-                <Route path="/game-parle" component={GameParle} />
-                <Route path="/game-over" component={GameOver} />
-                {/* <ShipPlacement socket={socket} /> */}
-              </ScrollView>
+            <ScrollView scrollEnabled={false}>
+              <HeaderComponent newGame={newGame} />
+              <Route exact path="/" component={Start} />
+              <Route path="/ship-placement" render={(props) => (
+                <ShipPlacement {...props} socket={socket} />
+              )} />
+              <Route path="/game-parle" component={GameParle} />
+              <Route path="/game-over" component={GameOver} />
+            </ScrollView>
           </View>
         </SafeAreaView>
       </NativeRouter >
