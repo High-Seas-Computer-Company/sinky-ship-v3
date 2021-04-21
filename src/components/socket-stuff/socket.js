@@ -1,6 +1,4 @@
 import socketIO from 'socket.io-client';
-import { useDispatch } from 'react-redux';
-import { gameStart } from '../../store/gameboard.slice.js';
 const serverUrl = 'https://sinky-ship.herokuapp.com/sinky-ship';
 
 const socket = socketIO(serverUrl, {
