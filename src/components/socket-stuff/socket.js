@@ -1,10 +1,16 @@
 import socketIO from 'socket.io-client';
+import { useSelector, useDispatch } from 'react-redux';
+import { gameStart, shipSetup } from '../../store/gameboard.slice.js';
+
 const serverUrl = 'https://sinky-ship.herokuapp.com/sinky-ship';
 
 const socket = socketIO(serverUrl, {
   transports: ['websocket'],
   jsonp: false
 });
+
+let gameboardInfo = useSelector(state => state.gameboards);
+let dispatch = useDispatch();
 
 export const startSocketIO = (store) => {
   socket.connect();
@@ -17,7 +23,9 @@ export const startSocketIO = (store) => {
 }
 
 export const startGame = (store) => {
-  socket.on('game-setup1', payload => console.log(payload));
+  socket.on('game-setup1', payload => {
+    dispatch(gameStart(payload));
+  });
   socket.emit('new-game');
 }
 
