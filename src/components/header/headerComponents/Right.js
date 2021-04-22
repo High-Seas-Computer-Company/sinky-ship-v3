@@ -3,7 +3,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native';
 
 export default function RightHeader({ newGame2 }) {
-console.log('new game', newGame2);
+// console.log('new game', newGame2);
 
   return (
     <TouchableOpacity

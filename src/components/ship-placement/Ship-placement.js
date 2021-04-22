@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, Text, View, Button, Alert } from 'react-native';
 import { NativeRouter, Route, Link } from "react-router-native";
 import Board from '../gameboard/gameboard.js';
-import { shipPlacement } from '../actions/actions.js';
+import { initialBoards, updatePlayerBoard, startNewGame, loadNewGameboards, shipPlacement } from '../actions/actions.js';
+
 import { If } from '../if/If.js';
 
 const styles = StyleSheet.create({
@@ -16,6 +17,8 @@ const styles = StyleSheet.create({
 });
 
 export const ShipPlacement = (props) => {
+
+
   return (
     <View style={styles.container}>
       <Text>Ship Placement</Text>
@@ -49,5 +52,13 @@ const mapStateToProps = (reduxState) => {
     shipsPlaced: reduxState.gameboards.shipsPlaced,
   }
 }
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     initialBoards: (payload) => {
+//       dispatch({ type: 'INITIAL_BOARDS', payload: payload})
+//     }
+//   };
+// };
 
 export default connect(mapStateToProps)(ShipPlacement);

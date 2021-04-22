@@ -14,7 +14,7 @@ export const updatePlayerBoard = (payload) => ({
 
 export const loadNewGameboards = (socket) => {
   return (dispatch) => {
-    socket.on('game-setup1', (payload) => {
+    socket.on('guess', (payload) => {
       dispatch(initialBoards(payload));
     });
   };
