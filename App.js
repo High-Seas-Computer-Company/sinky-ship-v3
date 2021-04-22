@@ -61,7 +61,9 @@ export default function App() {
           <View style={styles.container}>
             <ScrollView scrollEnabled={false}>
               <HeaderComponent newGame={newGame} />
-              <Route exact path="/" component={Start} />
+              <Route exact path="/" render={(props) => (
+                <Start newGame3={newGame} />
+              )} />
               <Route path="/ship-placement" render={(props) => (
                 <ShipPlacement {...props} socket={socket} />
               )} />

@@ -9,7 +9,7 @@ export default function HeaderComponent({ newGame }) {
     <>
       <Header
         leftComponent={<LeftHeader />}
-        centerComponent={{ text: 'SINKY SHIP', style: { color: 'black', fontSize: 24, } }}
+        centerComponent={{ text: 'SINKY SHIP', style: { color: 'black', fontSize: 24, fontFamily: 'System', fontWeight: 'bold' } }}
         rightComponent={<RightHeader newGame2={newGame} />}
         containerStyle={{
           backgroundColor: '#b9ced5',
