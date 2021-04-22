@@ -5,11 +5,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { ThemeProvider } from 'react-native-elements';
 
 // Sockety Sockets
-import { connect } from 'react-redux';
 import io from 'socket.io-client';
 
 // Reduxy Redux
-import { initialBoards, updatePlayerBoard, startNewGame, loadNewGameboards, shipPlacement } from './src/components/actions/actions.js';
+import { startNewGame, } from './src/components/actions/actions.js';
 import store from './src/store-vanilla/index.js';
 import { Provider } from 'react-redux';
 
@@ -17,14 +16,15 @@ import { Provider } from 'react-redux';
 import HeaderComponent from './src/components/header/Header.js';
 import Start from './src/components/start/Start.js';
 import ShipPlacement from './src/components/ship-placement/Ship-placement.js';
-import GameParle from './src/components/gameplay/Gameplay.js';
+import GameParley from './src/components/gameplay/Gameplay.js';
 import GameOver from './src/components/gameover/Gameover.js';
 
-// const serverUrl = 'https://sinky-ship-v3.herokuapp.com/';
-const serverUrl = 'http://localhost:3000';
+const serverUrl = 'https://sinky-ship-v3.herokuapp.com/';
+// const serverUrl = 'http://localhost:3000';
 
 export default function App(props) {
-  let [game, setGame] = useState({});
+
+  let [gamePayload, setGamePayload] = useState({});
   let [socket, setSocket] = useState(io.connect(serverUrl, {
     transports: ['websocket'],
     jsonp: false
@@ -37,41 +37,27 @@ export default function App(props) {
   }
 
   useEffect(() => {
-    // socket = io.connect(serverUrl, {
-    //   transports: ['websocket'],
-    //   jsonp: false
-    // });
-
-    // setSocket(client);
-
-    socket.on('game-setup1', (payload) => {
-      console.log('game started');
-      dispatch(initialBoards(payload));
-      // dispatch(shipPlacement(payload, payload['Spanish Galleon']));
-    });
 
     socket.on('guess', (payload) => {
-
-      setGame({ ...payload });
-
-      // console.log('this is guess payload', payload.computerBoard);
+      setGamePayload({ ...payload });
     });
-    // socket.on('response', (payload) => {
-    //   console.log('this is response payload', payload);
-    // });
+
     socket.on('game-over', (payload) => {
       console.log('Winner: ', payload.winner);
     });
 
-  }, []);
+    socket.on('disconnect', () => {
+      console.log('connection to server lost');
+    })
 
+  }, []);
 
   const newGame = () => {
     startNewGame();
     socket.emit('new-game');
   };
 
-
+  console.log('inital game object: ', gamePayload);
 
   return (
     <Provider store={store}>
@@ -85,9 +71,9 @@ export default function App(props) {
                   <Start newGame3={newGame} />
                 )} />
                 <Route path="/ship-placement" render={(props) => (
-                  <ShipPlacement {...props} socket={socket} game={game} />
+                  <ShipPlacement {...props} socket={socket} gamePayload={gamePayload} />
                 )} />
-                <Route path="/game-parle" component={GameParle} />
+                <Route path="/game-parley" component={GameParley} />
                 <Route path="/game-over" component={GameOver} />
               </ScrollView>
             </View>
@@ -99,13 +85,6 @@ export default function App(props) {
   );
 }
 
-const mapStateToProps = (reduxState) => {
-  return {
-    gameObject: reduxState.gameboards.gameObject,
-    playerBoard: reduxState.gameboards.playerBoard,
-    computerBoard: reduxState.gameboards.computerBoard,
-  }
-}
 
 const styles = StyleSheet.create({
   safeArea: {

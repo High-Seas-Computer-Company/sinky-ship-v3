@@ -22,7 +22,7 @@ export const ShipPlacement = (props) => {
     <View style={styles.container}>
       <Text style={styles.textColor}>Ship Placement</Text>
       <Text style={styles.textColor}>Ready to placey ships?</Text>
-      <Board socket={props.socket} game={props.game}/>
+      <Board socket={props.socket} gamePayload={props.gamePayload}/>
     </View >
   );
 }

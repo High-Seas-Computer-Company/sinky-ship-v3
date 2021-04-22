@@ -34,7 +34,7 @@ function taskRunner(item, props) {
   console.log('item: ', item);
   let targetValue = targetConverter(item.name);
   // console.log('this is props.socket', props.socket);
-  nextGuess(props.game, targetValue, props.socket);
+  nextGuess(props.gamePayload, targetValue, props.socket);
   // props.socket.emit('response', props.game, targetValue);
   // return targetValue;
 }
