@@ -1,11 +1,40 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, Text, View, Button, Alert } from 'react-native';
+import { StyleSheet, View, Button, Alert } from 'react-native';
+import { Text } from 'react-native-elements';
 import { NativeRouter, Route, Link } from "react-router-native";
 import Board from '../gameboard/gameboard.js';
 import { initialBoards, updatePlayerBoard, startNewGame, loadNewGameboards, shipPlacement } from '../actions/actions.js';
 
 import { If } from '../if/If.js';
+
+
+
+export const ShipPlacement = (props) => {
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.textColor}>Ship Placement</Text>
+      <Text style={styles.textColor}>Ready to placey ships?</Text>
+      <Board socket={props.socket} />
+      <If condition={props.shipsPlaced === 0}>
+        <Text style={styles.textColor}>Spanish Galleon</Text>
+      </If>
+      <If condition={props.shipsPlaced === 1}>
+        <Text style={styles.textColor}>Dutch Fleut</Text>
+      </If>
+      <If condition={props.shipsPlaced === 2}>
+        <Text style={styles.textColor}>Brigantine</Text>
+      </If>
+      <If condition={props.shipsPlaced === 3}>
+        <Text style={styles.textColor}>Sloop</Text>
+      </If>
+      <If condition={props.shipsPlaced === 4}>
+        <Text style={styles.textColor}>Schooner</Text>
+      </If>
+    </View >
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -14,35 +43,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  textColor: {
+    color: '#3c2829',
+  }
 });
-
-export const ShipPlacement = (props) => {
-
-
-  return (
-    <View style={styles.container}>
-      <Text>Ship Placement</Text>
-      <Text>Ready to placey ships?</Text>
-      <Board socket={props.socket}/>
-      <If condition={props.shipsPlaced === 0}>
-        <Text>Spanish Galleon</Text>
-      </If>
-      <If condition={props.shipsPlaced === 1}>
-        <Text>Dutch Fleut</Text>
-      </If>
-      <If condition={props.shipsPlaced === 2}>
-        <Text>Brigantine</Text>
-      </If>
-      <If condition={props.shipsPlaced === 3}>
-        <Text>Sloop</Text>
-      </If>
-      <If condition={props.shipsPlaced === 4}>
-        <Text>Schooner</Text>
-      </If>
-    </View >
-  );
-}
-
 
 const mapStateToProps = (reduxState) => {
   return {

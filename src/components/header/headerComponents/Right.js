@@ -11,7 +11,7 @@ export default function RightHeader({ newGame2 }) {
     >
       <MaterialCommunityIcons
         name='pirate'
-        color='black'
+        color='#3c2829'
         size={32}
       />
     </TouchableOpacity>

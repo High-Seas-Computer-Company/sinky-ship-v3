@@ -23,20 +23,24 @@ export default function Start({ newGame3 }) {
       <FlatList
         scrollEnabled={false}
         data={[
-          { key: 'Tap Blackbeard at anytime to start a new game' },
           { key: 'Tap a square to to guess your opponents ship location' },
+          { key: 'Tap Blackbeard at anytime to refresh the board with a new game' },
+          { key: 'Tap the Home Icon to return here!' },
           { key: 'Tap the button below when you\'re ready to start' }
         ]}
         renderItem={({ item }) => <Text style={styles.textStyle}>{item.key}</Text>}
       />
-      <Link
-        component={Button}
-        onPress={newGame3}
-        to="/ship-placement"
-        title="Start Game vs Computer"
-        style={styles.buttonOne}
-      >
-      </Link>
+      <View style={styles.buttonOne}>
+        <Link
+          component={Button}
+          onPress={newGame3}
+          to="/ship-placement"
+          title="Start Game vs Computer"
+          raised={true}
+          // buttonStyle={{backgroundColor: 'red'}}
+        >
+        </Link>
+      </View>
     </View >
   );
 }
@@ -59,7 +63,7 @@ const styles = StyleSheet.create({
   textStyle: {
     width: 325,
     textAlign: 'justify',
-    marginTop: 20,
+    marginTop: 15,
   },
   h4Style: {
     marginTop: 20,
