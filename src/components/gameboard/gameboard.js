@@ -45,7 +45,7 @@ export default function Board(props) {
 
   return (
     <>
-      <Button title="Your Grid" />
+      {/* <Button title="Your Grid" /> */}
       <FlatGrid
         itemDimension={40}
         data={items}
@@ -73,7 +73,7 @@ export default function Board(props) {
 
         )}
       />
-      <Compass />
+      {/* <Compass /> */}
     </>
   );
 }
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     // borderRadius: 5,
     borderWidth: 0.25,
-    borderColor: 'black',
+    borderColor: '#3c2829',
     padding: 10,
     height: 40,
   },
