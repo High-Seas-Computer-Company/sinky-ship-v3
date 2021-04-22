@@ -14,9 +14,8 @@ import ShipPlacement from './src/components/ship-placement/Ship-placement.js';
 import GameParle from './src/components/gameplay/Gameplay.js';
 import GameOver from './src/components/gameover/Gameover.js';
 
-// const serverUrl = 'https://sinky-ship.herokuapp.com/sinky-ship';
 const serverUrl = 'https://sinky-ship-v3.herokuapp.com/';
-
+//const serverUrl = 'http:/ / localhost: 3000';
 
 export default function App(props) {
   let [game, setGame] = useState({});
@@ -38,9 +37,16 @@ export default function App(props) {
       dispatch(initialBoards(payload));
       // dispatch(shipPlacement(payload, payload['Spanish Galleon']));
     });
+
     socket.on('guess', (payload) => {
+
       setGame({...payload});
+
+      console.log('this is guess payload', payload.computerBoard);
     });
+    // socket.on('response', (payload) => {
+    //   console.log('this is response payload', payload);
+    // });
 
   }, []);
 
@@ -61,7 +67,9 @@ export default function App(props) {
           <View style={styles.container}>
             <ScrollView scrollEnabled={false}>
               <HeaderComponent newGame={newGame} />
-              <Route exact path="/" component={Start} />
+              <Route exact path="/" render={(props) => (
+                <Start newGame3={newGame} />
+              )} />
               <Route path="/ship-placement" render={(props) => (
                 <ShipPlacement {...props} socket={socket} />
               )} />
