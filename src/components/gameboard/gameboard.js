@@ -34,16 +34,20 @@ function taskRunner(item, props) {
   console.log('item: ', item);
   let targetValue = targetConverter(item.name);
   // console.log('this is props.socket', props.socket);
-  nextGuess(props.gamePayload, targetValue, props.socket);
+  nextGuess(props.gamePayload, targetValue, item.name, props.socket);
   // props.socket.emit('response', props.game, targetValue);
   // return targetValue;
 }
 export default function Board(props) {
   // console.log('props: ', props);
+  
   const [items, setItems] = useState(grid);
   let [colour, setColour] = useState(false);
   let [bgColour, setBgColour] = useState('#286c9c');
 
+  useEffect(() => {
+    setItems(props.gamePayload.displayBoard);
+  }, [props.gamePayload]);
 
   return (
     <>
@@ -67,8 +71,8 @@ export default function Board(props) {
              <Text style={styles.itemCode}>{item.code}</Text> 
              </View> */}
             < View
-              className={item.name}
               style={[styles.itemContainer, { backgroundColor: bgColour }]}
+              style={[styles.itemValue, { backgroundColor: item.value }]}
             />
 
           </TouchableHighlight>
@@ -86,6 +90,14 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   itemContainer: {
+    justifyContent: 'flex-end',
+    // borderRadius: 5,
+    borderWidth: 0.25,
+    borderColor: '#3c2829',
+    padding: 10,
+    height: 40,
+  },
+  itemValue: {
     justifyContent: 'flex-end',
     // borderRadius: 5,
     borderWidth: 0.25,
