@@ -15,9 +15,11 @@ import GameParle from './src/components/gameplay/Gameplay.js';
 import GameOver from './src/components/gameover/Gameover.js';
 
 // const serverUrl = 'https://sinky-ship.herokuapp.com/sinky-ship';
-const serverUrl = 'http://localhost:3000';
+const serverUrl = 'https://sinky-ship-v3.herokuapp.com/';
 
-export default function App() {
+
+export default function App(props) {
+  let [game, setGame] = useState({});
   let [socket, setSocket] = useState(io.connect(serverUrl, {
     transports: ['websocket'],
     jsonp: false
@@ -37,17 +39,20 @@ export default function App() {
       // dispatch(shipPlacement(payload, payload['Spanish Galleon']));
     });
     socket.on('guess', (payload) => {
-      console.log('this is guess payload', payload);
+      setGame({...payload});
     });
 
   }, []);
 
-  console.log('this is socket', socket);
 
   const newGame = () => {
     startNewGame();
     socket.emit('new-game');
   };
+
+  console.log('game-state', game.id);
+  console.log('checking state', props.computerBoard);
+
 
   return (
     <Provider store={store}>
@@ -72,7 +77,7 @@ export default function App() {
 
 const mapStateToProps = (reduxState) => {
   return {
-    gameObject: reduxState.gameObject,
+    gameObject: reduxState.gameboards.gameObject,
     playerBoard: reduxState.gameboards.playerBoard,
     computerBoard: reduxState.gameboards.computerBoard,
   }

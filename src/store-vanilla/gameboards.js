@@ -10,6 +10,7 @@ const reducer = (state = initialState, action) => {
 
   switch (type) {
     case 'INITIAL_BOARDS':
+      console.log('inital boards case firing', payload);
       return {
         gameObject: payload,
         playerBoard: payload.playerBoard,
