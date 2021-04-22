@@ -1,5 +1,6 @@
 import { Alert } from 'react-native';
 
+
 export const initialCoordinateCheck = (board, value) => {
   let letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
   let verticalCoordLetter = value.substring(0, 1).toUpperCase();
@@ -47,14 +48,14 @@ export const nextGuess = (payload, value, displayBox, responseSocket) => {
   if (boardCheck.status === 'Hit') {
     console.log('Hitty-Hit');
     payload.displayBoard[displayBox].value = 'red';
-    payload.missileStatus = 'Hit';
+    payload.missileStatus = 'Hitty Hit';
     console.log('HIT! YOU\'RE ON YOUR WAY TO SINKY SHIP');
     responseSocket.emit('response', payload);
     // return true;
   } else if (boardCheck.status === 'Miss') {
     console.log('Missy-Miss');
     payload.displayBoard[displayBox].value = 'white';
-    payload.missileStatus = 'Miss';
+    payload.missileStatus = 'Missy Miss';
     console.log('MISS! YOU`LL HAVE TO AIM BETTER THAN THAT!');
     responseSocket.emit('response', payload);
     // return true;
