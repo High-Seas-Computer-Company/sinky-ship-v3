@@ -5,6 +5,7 @@ import { FlatGrid } from 'react-native-super-grid';
 // import { Ionicons } from '@expo/vector-icons';
 // import { AntDesign } from '@expo/vector-icons';
 import Compass from '../compass/Compass.js';
+//import { guess } from '../actions/action-helpers.js'
 
 let grid = function () {
   let gridArray = [];
@@ -31,8 +32,8 @@ function taskRunner(item, props) {
 
   console.log('item: ', item);
   let targetValue = targetConverter(item.name);
-  // console.log('this is props.socket', props.socket);
-  
+  console.log('this is props.socket', props.socket);
+
   props.socket.emit('response', targetValue);
   return targetValue;
 }
