@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Alert, ActivityIndicator, Image } from 'react-native';
+import { StyleSheet, View, FlatList, ActivityIndicator, Image } from 'react-native';
 import { NativeRouter, Route, Link, TouchableOpacity } from "react-router-native";
 import { Button, Text } from 'react-native-elements';
 import ButtonLink from './button/ButtonLink.js';
@@ -7,7 +7,7 @@ import ButtonLink from './button/ButtonLink.js';
 // import image from '../../../assets/pirateShip.jpg';
 
 
-export default function Start() {
+export default function Start({ newGame3 }) {
 
 
   return (
@@ -19,13 +19,22 @@ export default function Start() {
         PlaceholderContent={<ActivityIndicator />}
       />
       {/* <Button title="Start Game vs Computer" as={Link} to={{ pathname: "/ship-placement" }} /> */}
-      <Text h3>HOW TO:</Text>
+      <Text style={styles.h4Style} h4>HOW TO:</Text>
+      <FlatList
+        scrollEnabled={false}
+        data={[
+          { key: 'Tap Blackbeard at anytime to start a new game' },
+          { key: 'Tap a square to to guess your opponents ship location' },
+          { key: 'Tap the button below when you\'re ready to start' }
+        ]}
+        renderItem={({ item }) => <Text style={styles.textStyle}>{item.key}</Text>}
+      />
       <Link
         component={Button}
+        onPress={newGame3}
         to="/ship-placement"
         title="Start Game vs Computer"
         style={styles.buttonOne}
-      // activeOpacity={0.8}
       >
       </Link>
     </View >
@@ -45,6 +54,14 @@ const styles = StyleSheet.create({
     height: 400,
   },
   buttonOne: {
+    marginTop: 40,
+  },
+  textStyle: {
+    width: 325,
+    textAlign: 'justify',
+    marginTop: 20,
+  },
+  h4Style: {
     marginTop: 20,
   }
 });
