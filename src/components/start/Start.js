@@ -37,6 +37,7 @@ export default function Start({ newGame3 }) {
           to="/ship-placement"
           title="Start Game vs Computer"
           raised={true}
+          // buttonStyle={{backgroundColor: 'red'}}
         >
         </Link>
       </View>
