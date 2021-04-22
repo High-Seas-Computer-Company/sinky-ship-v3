@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { StyleSheet, Text, View, Button, Alert } from 'react-native';
 import { NativeRouter, Route, Link } from "react-router-native";
 import Board from '../gameboard/gameboard.js';
@@ -18,27 +18,18 @@ const styles = StyleSheet.create({
 
 export const ShipPlacement = (props) => {
 
+    let dispatch = useDispatch();
+
+    useEffect(() => {
+      dispatch(initialBoards({...props.game}));
+    }, []);
+
 
   return (
     <View style={styles.container}>
       <Text>Ship Placement</Text>
       <Text>Ready to placey ships?</Text>
-      <Board socket={props.socket}/>
-      <If condition={props.shipsPlaced === 0}>
-        <Text>Spanish Galleon</Text>
-      </If>
-      <If condition={props.shipsPlaced === 1}>
-        <Text>Dutch Fleut</Text>
-      </If>
-      <If condition={props.shipsPlaced === 2}>
-        <Text>Brigantine</Text>
-      </If>
-      <If condition={props.shipsPlaced === 3}>
-        <Text>Sloop</Text>
-      </If>
-      <If condition={props.shipsPlaced === 4}>
-        <Text>Schooner</Text>
-      </If>
+      <Board socket={props.socket} game={props.game}/>
     </View >
   );
 }
@@ -53,12 +44,12 @@ const mapStateToProps = (reduxState) => {
   }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     initialBoards: (payload) => {
-//       dispatch({ type: 'INITIAL_BOARDS', payload: payload})
-//     }
-//   };
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    initialBoards: (payload) => {
+      dispatch({ type: 'INITIAL_BOARDS', payload: payload})
+    }
+  };
+};
 
-export default connect(mapStateToProps)(ShipPlacement);
+export default connect(mapStateToProps, mapDispatchToProps)(ShipPlacement);

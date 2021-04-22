@@ -42,11 +42,14 @@ export default function App(props) {
 
       setGame({...payload});
 
-      console.log('this is guess payload', payload.computerBoard);
+      // console.log('this is guess payload', payload.computerBoard);
     });
     // socket.on('response', (payload) => {
     //   console.log('this is response payload', payload);
     // });
+    socket.on('game-over', (payload) => {
+      console.log('Winner: ', payload.winner);
+    });
 
   }, []);
 
@@ -56,8 +59,6 @@ export default function App(props) {
     socket.emit('new-game');
   };
 
-  console.log('game-state', game.id);
-  console.log('checking state', props.computerBoard);
 
 
   return (
@@ -71,7 +72,7 @@ export default function App(props) {
                 <Start newGame3={newGame} />
               )} />
               <Route path="/ship-placement" render={(props) => (
-                <ShipPlacement {...props} socket={socket} />
+                <ShipPlacement {...props} socket={socket} game={game} />
               )} />
               <Route path="/game-parle" component={GameParle} />
               <Route path="/game-over" component={GameOver} />
