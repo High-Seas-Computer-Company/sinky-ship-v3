@@ -9,7 +9,7 @@ export default function LeftHeader() {
     <Link to='/' component={TouchableOpacity} >
       <MaterialIcons
         name='home'
-        color='black'
+        color='#3c2829'
         size={32}
       />
     </Link>

@@ -1,20 +1,13 @@
 import React, { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
-import { StyleSheet, Text, View, Button, Alert } from 'react-native';
+import { StyleSheet, View, Button, Alert } from 'react-native';
+import { Text } from 'react-native-elements';
 import { NativeRouter, Route, Link } from "react-router-native";
 import Board from '../gameboard/gameboard.js';
 import { initialBoards, updatePlayerBoard, startNewGame, loadNewGameboards, shipPlacement } from '../actions/actions.js';
 
 import { If } from '../if/If.js';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export const ShipPlacement = (props) => {
 
@@ -27,13 +20,24 @@ export const ShipPlacement = (props) => {
 
   return (
     <View style={styles.container}>
-      <Text>Ship Placement</Text>
-      <Text>Ready to placey ships?</Text>
+      <Text style={styles.textColor}>Ship Placement</Text>
+      <Text style={styles.textColor}>Ready to placey ships?</Text>
       <Board socket={props.socket} game={props.game}/>
     </View >
   );
 }
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  textColor: {
+    color: '#3c2829',
+  }
+});
 
 const mapStateToProps = (reduxState) => {
   return {
