@@ -32,27 +32,28 @@ function checkBoard(board, value) {
   }
 }
 
-export const nextGuess = (payload, value, responseSocket) => {
+export const nextGuess = (payload, value, displayBox, responseSocket) => {
 
   // computer guesses against human player
   if (payload.computerGuess === 'Hit') {
-    Alert.alert(`The computer has hit one of your ships!`);
+    console.log(`The computer has hit one of your ships!`);
   }
   if (payload.computerGuess === 'Miss') {
-    Alert.alert('The computer missed your sinky ships!');
+    console.log('The computer missed your sinky ships!');
   }
 
 
   let boardCheck = checkBoard(payload.computerBoard, value);
   if (boardCheck.status === 'Hit') {
     console.log('Hitty-Hit');
-    console.log(payload.computerBoard);
+    payload.displayBoard[displayBox].value = 'red';
     payload.missileStatus = 'Hit';
     console.log('HIT! YOU\'RE ON YOUR WAY TO SINKY SHIP');
     responseSocket.emit('response', payload);
     // return true;
   } else if (boardCheck.status === 'Miss') {
     console.log('Missy-Miss');
+    payload.displayBoard[displayBox].value = 'white';
     payload.missileStatus = 'Miss';
     console.log('MISS! YOU`LL HAVE TO AIM BETTER THAN THAT!');
     responseSocket.emit('response', payload);

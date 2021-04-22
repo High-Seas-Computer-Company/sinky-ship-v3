@@ -24,7 +24,19 @@ const serverUrl = 'https://sinky-ship-v3.herokuapp.com/';
 
 export default function App(props) {
 
-  let [gamePayload, setGamePayload] = useState({});
+  function displayGridGenerator() {
+  const displayArray = [];
+
+  for(let i = 0 ; i < 100 ; i++) {
+    displayArray[i] = { name: i, value: 'blue'};
+  }
+  return displayArray;
+}
+
+  let initialDisplay = displayGridGenerator();
+
+  let [gameComplete, setGameComplete] = useState('no');
+  let [gamePayload, setGamePayload] = useState({displayBoard: initialDisplay});
   let [socket, setSocket] = useState(io.connect(serverUrl, {
     transports: ['websocket'],
     jsonp: false
@@ -44,6 +56,7 @@ export default function App(props) {
 
     socket.on('game-over', (payload) => {
       console.log('Winner: ', payload.winner);
+      setGameComplete(payload.winner);
     });
 
     socket.on('disconnect', () => {
@@ -57,7 +70,7 @@ export default function App(props) {
     socket.emit('new-game');
   };
 
-  console.log('inital game object: ', gamePayload);
+  console.log('the game object contains: ', gamePayload.displayBoard);
 
   return (
     <Provider store={store}>
@@ -74,7 +87,9 @@ export default function App(props) {
                   <ShipPlacement {...props} socket={socket} gamePayload={gamePayload} />
                 )} />
                 <Route path="/game-parley" component={GameParley} />
-                <Route path="/game-over" component={GameOver} />
+                {/* <Route path="/game-over" render={(props) => (
+                  <GameOver {...props} socket={socket} gamePayload={gamePayload} gameComplete={gameComplete} newGame={newGame} />
+                )} /> */}
               </ScrollView>
             </View>
           </ThemeProvider>
