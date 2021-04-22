@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { StyleSheet, View, Button, Alert } from 'react-native';
 import { Text } from 'react-native-elements';
 import { NativeRouter, Route, Link } from "react-router-native";
@@ -9,29 +9,20 @@ import { initialBoards, updatePlayerBoard, startNewGame, loadNewGameboards, ship
 import { If } from '../if/If.js';
 
 
-
 export const ShipPlacement = (props) => {
+
+    let dispatch = useDispatch();
+
+    useEffect(() => {
+      dispatch(initialBoards({...props.game}));
+    }, []);
+
 
   return (
     <View style={styles.container}>
       <Text style={styles.textColor}>Ship Placement</Text>
       <Text style={styles.textColor}>Ready to placey ships?</Text>
-      <Board socket={props.socket} />
-      <If condition={props.shipsPlaced === 0}>
-        <Text style={styles.textColor}>Spanish Galleon</Text>
-      </If>
-      <If condition={props.shipsPlaced === 1}>
-        <Text style={styles.textColor}>Dutch Fleut</Text>
-      </If>
-      <If condition={props.shipsPlaced === 2}>
-        <Text style={styles.textColor}>Brigantine</Text>
-      </If>
-      <If condition={props.shipsPlaced === 3}>
-        <Text style={styles.textColor}>Sloop</Text>
-      </If>
-      <If condition={props.shipsPlaced === 4}>
-        <Text style={styles.textColor}>Schooner</Text>
-      </If>
+      <Board socket={props.socket} game={props.game}/>
     </View >
   );
 }
@@ -57,12 +48,12 @@ const mapStateToProps = (reduxState) => {
   }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     initialBoards: (payload) => {
-//       dispatch({ type: 'INITIAL_BOARDS', payload: payload})
-//     }
-//   };
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    initialBoards: (payload) => {
+      dispatch({ type: 'INITIAL_BOARDS', payload: payload})
+    }
+  };
+};
 
-export default connect(mapStateToProps)(ShipPlacement);
+export default connect(mapStateToProps, mapDispatchToProps)(ShipPlacement);

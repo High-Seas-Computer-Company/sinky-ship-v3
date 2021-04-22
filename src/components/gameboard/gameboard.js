@@ -6,6 +6,7 @@ import { FlatGrid } from 'react-native-super-grid';
 // import { AntDesign } from '@expo/vector-icons';
 import Compass from '../compass/Compass.js';
 //import { guess } from '../actions/action-helpers.js'
+import { nextGuess } from '../actions/action-helpers.js';
 
 let grid = function () {
   let gridArray = [];
@@ -32,16 +33,17 @@ function taskRunner(item, props) {
 
   console.log('item: ', item);
   let targetValue = targetConverter(item.name);
-  console.log('this is props.socket', props.socket);
-
-  props.socket.emit('response', targetValue);
-  return targetValue;
+  // console.log('this is props.socket', props.socket);
+  nextGuess(props.game, targetValue, props.socket);
+  // props.socket.emit('response', props.game, targetValue);
+  // return targetValue;
 }
 export default function Board(props) {
   // console.log('props: ', props);
   const [items, setItems] = useState(grid);
   let [colour, setColour] = useState(false);
   let [bgColour, setBgColour] = useState('#286c9c');
+
 
   return (
     <>

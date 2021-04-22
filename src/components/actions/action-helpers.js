@@ -146,7 +146,7 @@ function checkBoard(board, value) {
   }
 }
 
-export const nextGuess = (payload, value) => {
+export const nextGuess = (payload, value, responseSocket) => {
 
   //computer guesses against human player
   // if (payload.computerGuess === 'Hit') {
@@ -159,23 +159,29 @@ export const nextGuess = (payload, value) => {
   //   type: 'input',
   //   name: 'attack',
   //   message: 'Please select an attack coordinate(A-J + 1-9) that has not already been hit for your cannon ball shot Example: H2',
+
+  console.log('nextGuess-socket', responseSocket.connected);
   let boardCheck = checkBoard(payload.computerBoard, value);
   if (boardCheck.status === 'Hit') {
+    console.log('Hitty-Hit');
+    console.log(payload.computerBoard);
     payload.missileStatus = 'Hit';
-    return true;
-  } else if (boardCheck.status === 'Miss') {
-    payload.missileStatus = 'Miss';
-    return true;
-  } else if (!boardCheck) {
-    return console.log('board check');
-  }
-
-  if (payload.missileStatus === 'Hit') {
     console.log('HIT! YOU\'RE ON YOUR WAY TO SINKY SHIP');
-  }
-  if (payload.missileStatus === 'Miss') {
-
+    responseSocket.emit('response', payload);
+    // return true;
+  } else if (boardCheck.status === 'Miss') {
+    console.log('Missy-Miss');
+    payload.missileStatus = 'Miss';
     console.log('MISS! YOU`LL HAVE TO AIM BETTER THAN THAT!');
+    responseSocket.emit('response', payload);
+    // return true;
+  } else if (!boardCheck) {
+    return console.log('Try again');
   }
-  sinkyShipServer.emit('response', payload);
+
+  // if (payload.missileStatus === 'Hit') {
+  // }
+  // if (payload.missileStatus === 'Miss') {
+
+  // }
 }
