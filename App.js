@@ -14,8 +14,8 @@ import ShipPlacement from './src/components/ship-placement/Ship-placement.js';
 import GameParle from './src/components/gameplay/Gameplay.js';
 import GameOver from './src/components/gameover/Gameover.js';
 
-const serverUrl = 'https://sinky-ship-v3.herokuapp.com/';
-//const serverUrl = 'http:/ / localhost: 3000';
+// const serverUrl = 'https://sinky-ship-v3.herokuapp.com/';
+const serverUrl = 'http://localhost:3000';
 
 export default function App(props) {
   let [game, setGame] = useState({});

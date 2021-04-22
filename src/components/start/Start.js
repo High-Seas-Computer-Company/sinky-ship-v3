@@ -29,14 +29,16 @@ export default function Start({ newGame3 }) {
         ]}
         renderItem={({ item }) => <Text style={styles.textStyle}>{item.key}</Text>}
       />
-      <Link
-        component={Button}
-        onPress={newGame3}
-        to="/ship-placement"
-        title="Start Game vs Computer"
-        style={styles.buttonOne}
-      >
-      </Link>
+      <View style={styles.buttonOne}>
+        <Link
+          component={Button}
+          onPress={newGame3}
+          to="/ship-placement"
+          title="Start Game vs Computer"
+          raised={true}
+        >
+        </Link>
+      </View>
     </View >
   );
 }
