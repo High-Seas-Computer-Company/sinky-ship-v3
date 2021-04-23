@@ -3,8 +3,8 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native';
 import { Link } from 'react-router-native';
 
-export default function LeftHeader() {
 
+const LeftHeader = () => {
   return (
     <Link to='/' component={TouchableOpacity} >
       <MaterialIcons
@@ -15,3 +15,5 @@ export default function LeftHeader() {
     </Link>
   );
 }
+
+export default LeftHeader;

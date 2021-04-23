@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
-
 import { AntDesign } from '@expo/vector-icons';
 
-export default function Compass() {
+// Component
+const Compass = () => {
   return (
     <>
       <View style={styles.arrowBox}>
@@ -42,3 +42,5 @@ const styles = StyleSheet.create({
     borderRadius: 69,
   },
 });
+
+export default Compass;

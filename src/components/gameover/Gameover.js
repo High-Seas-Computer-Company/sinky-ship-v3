@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, Alert, Modal, TouchableHighlight } from 'react-native';
+import { StyleSheet, View, Alert, Modal, TouchableHighlight } from 'react-native';
+import { Button, Text } from 'react-native-elements';
 
-export default function GameOver(props) {
+
+const GameOver = (props) => {
 
   const [modalVisible, setModalVisible] = useState(true);
-  if(!props.gameComplete === 'no') {
+  if (!props.gameComplete === 'no') {
     setModalVisible(true);
   }
 
@@ -12,12 +14,12 @@ export default function GameOver(props) {
     <View style={styles.centeredView}>
       <Text style={styles.modalText}>Winner: {props.gameComplete}</Text>
       <TouchableHighlight
-      style={{ ...styles.openButton, backgroundColor: '#2196F3' }}
-      onPress={() => {
-        setModalVisible(!modalVisible);
-        props.newGame();
-      }}>
-      <Text style={styles.textStyle}>Try another game?</Text>
+        style={{ ...styles.openButton, backgroundColor: '#2196F3' }}
+        onPress={() => {
+          setModalVisible(!modalVisible);
+          props.newGame();
+        }}>
+        <Text style={styles.textStyle}>Try another game?</Text>
       </TouchableHighlight>
       {/* <Modal
         animationType="slide"
@@ -98,3 +100,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
+
+export default GameOver;

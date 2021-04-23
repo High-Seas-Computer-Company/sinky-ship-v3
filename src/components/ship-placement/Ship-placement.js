@@ -1,28 +1,25 @@
 import React, { useEffect } from 'react';
+import { StyleSheet, View } from 'react-native';
+
+// Redux
 import { connect, useDispatch } from 'react-redux';
-import { StyleSheet, View, Button, Alert } from 'react-native';
-import { Text } from 'react-native-elements';
-import { NativeRouter, Route, Link } from "react-router-native";
-import Board from '../gameboard/gameboard.js';
-import { initialBoards, updatePlayerBoard, startNewGame, loadNewGameboards, shipPlacement } from '../actions/actions.js';
+import { initialBoards } from '../actions/actions.js';
 
-import { If } from '../if/If.js';
+// Components
+import Board from '../gameboard/Gameboard.js';
 
 
+// Component
 export const ShipPlacement = (props) => {
+  let dispatch = useDispatch();
 
-    let dispatch = useDispatch();
-
-    useEffect(() => {
-      dispatch(initialBoards({...props.game}));
-    }, []);
-
+  useEffect(() => {
+    dispatch(initialBoards({ ...props.game }));
+  }, []);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.textColor}>It's Time to ... SINKY SHIP!!</Text>
-      <Text style={styles.textColor}>Tap a square to make a shot</Text>
-      <Board socket={props.socket} gamePayload={props.gamePayload}/>
+      <Board socket={props.socket} gamePayload={props.gamePayload} />
     </View >
   );
 }
@@ -33,9 +30,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  textColor: {
-    color: '#3c2829',
   }
 });
 
@@ -45,13 +39,13 @@ const mapStateToProps = (reduxState) => {
     playerBoard: reduxState.gameboards.playerBoard,
     computerBoard: reduxState.gameboards.computerBoard,
     shipsPlaced: reduxState.gameboards.shipsPlaced,
-  }
-}
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     initialBoards: (payload) => {
-      dispatch({ type: 'INITIAL_BOARDS', payload: payload})
+      dispatch({ type: 'INITIAL_BOARDS', payload: payload })
     }
   };
 };

@@ -2,9 +2,8 @@ import React from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native';
 
-export default function RightHeader({ newGame2 }) {
-// console.log('new game', newGame2);
 
+const RightHeader = ({ newGame2 }) => {
   return (
     <TouchableOpacity
       onPress={newGame2}
@@ -17,3 +16,5 @@ export default function RightHeader({ newGame2 }) {
     </TouchableOpacity>
   );
 }
+
+export default RightHeader;
