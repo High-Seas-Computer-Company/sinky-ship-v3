@@ -21,8 +21,8 @@ import GameParley from './src/components/gameplay/Gameplay.js';
 import GameOver from './src/components/gameover/Gameover.js';
 import If from './src/components/if/If.js';
 
-// const serverUrl = 'https://sinky-ship-v3.herokuapp.com/';
-const serverUrl = 'http://localhost:3000';
+const serverUrl = 'https://sinky-ship-v3.herokuapp.com/';
+// const serverUrl = 'http://localhost:3000';
 
 export default function App(props) {
 
