@@ -1,14 +1,12 @@
 import React from 'react';
 import { StyleSheet, View, FlatList, ActivityIndicator, Image } from 'react-native';
-import { NativeRouter, Route, Link, TouchableOpacity } from "react-router-native";
+import { Link } from 'react-router-native';
 import { Button, Text } from 'react-native-elements';
-import ButtonLink from './button/ButtonLink.js';
-import { scale, verticalScale, moderateScale } from 'react-native-size-matters';
-// import image from '../../../assets/pirateShip.jpg';
+import { scale, verticalScale } from 'react-native-size-matters';
 
 
-export default function Start({ newGame3 }) {
-
+// Component
+const Start = ({ newGame3 }) => {
 
   return (
     <View style={styles.container}>
@@ -18,7 +16,6 @@ export default function Start({ newGame3 }) {
         style={styles.pirateImage}
         PlaceholderContent={<ActivityIndicator />}
       />
-      {/* <Button title="Start Game vs Computer" as={Link} to={{ pathname: "/ship-placement" }} /> */}
       <Text style={styles.h4Style} h4>HOW TO:</Text>
       <FlatList
         scrollEnabled={false}
@@ -37,14 +34,11 @@ export default function Start({ newGame3 }) {
           to="/ship-placement"
           title="Start Game vs Computer"
           raised={true}
-          // buttonStyle={{backgroundColor: 'red'}}
-        >
-        </Link>
+        />
       </View>
-    </View >
+    </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -55,20 +49,19 @@ const styles = StyleSheet.create({
   },
   pirateImage: {
     width: scale(300),
-    // width: 400,
     height: verticalScale(275),
-    // height: 400,
   },
   buttonOne: {
     marginTop: 10,
   },
   textStyle: {
     width: scale(260),
-    // width: 325,
     textAlign: 'justify',
     marginTop: 10,
   },
   h4Style: {
     marginTop: 10,
-  }
+  },
 });
+
+export default Start;

@@ -5,8 +5,8 @@ import { Header } from 'react-native-elements';
 import LeftHeader from './headerComponents/Left.js';
 import RightHeader from './headerComponents/Right.js';
 
-export default function HeaderComponent({ newGame }) {
 
+const HeaderComponent = ({ newGame }) => {
   return (
     <>
       <Header
@@ -20,3 +20,5 @@ export default function HeaderComponent({ newGame }) {
     </>
   );
 }
+
+export default HeaderComponent;

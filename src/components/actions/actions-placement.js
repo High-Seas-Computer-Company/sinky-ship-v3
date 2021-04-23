@@ -1,3 +1,4 @@
+
 export const displayShipHorizontal = (start, direction, gameboard, shipLength) => {
   let index;
   for (let i = 0; i < gameboard.length; i++) {
@@ -6,8 +7,8 @@ export const displayShipHorizontal = (start, direction, gameboard, shipLength) =
     if (index === -1) { continue; }
     if (direction.toLowerCase() === 'r') {
       let temp = index;
-
       let checkIndex = index;
+
       if (index + shipLength > 10) {
         log(error('\n Not enough room. Choose a different starting position, or direction. \n'));
 
@@ -28,8 +29,8 @@ export const displayShipHorizontal = (start, direction, gameboard, shipLength) =
     }
     else if (direction.toLowerCase() === 'l') {
       let temp = index;
-
       let checkIndex = index;
+
       if (index - shipLength < -1) {
         log(error('\n Not enough room. Choose a different starting position, or direction.\n'));
 

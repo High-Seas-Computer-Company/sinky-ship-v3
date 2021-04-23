@@ -10,8 +10,7 @@ export const updatePlayerBoard = (payload) => ({
   payload: payload
 });
 
-// Sockets
-
+// ========= Sockets =========
 export const loadNewGameboards = (socket) => {
   return (dispatch) => {
     socket.on('guess', (payload) => {
@@ -27,8 +26,7 @@ export const startNewGame = (socket) => {
   };
 };
 
-// Ship Setup
-
+// ========= Ship Setup =========
 export const shipPlacement = (payload, ship, touchEntry) => {
   return (dispatch) => {
     payload.shipSetup = {};
@@ -36,7 +34,6 @@ export const shipPlacement = (payload, ship, touchEntry) => {
       console.log('Insert try again prompt, alert, modal here'); // placeholder
     }
     payload.shipSetup.coordinate = touchEntry; // now added to payload as a nested property
-
   };
 };
 
