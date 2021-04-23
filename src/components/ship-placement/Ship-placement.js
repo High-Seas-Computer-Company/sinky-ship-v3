@@ -20,8 +20,8 @@ export const ShipPlacement = (props) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.textColor}>Ship Placement</Text>
-      <Text style={styles.textColor}>Ready to placey ships?</Text>
+      <Text style={styles.textColor}>It's Time to ... SINKY SHIP!!</Text>
+      <Text style={styles.textColor}>Tap a square to make a shot</Text>
       <Board socket={props.socket} gamePayload={props.gamePayload}/>
     </View >
   );

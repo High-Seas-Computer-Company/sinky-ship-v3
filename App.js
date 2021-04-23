@@ -40,7 +40,9 @@ export default function App(props) {
 
   let [vocal, setVocal] = useState('');
   let [gameComplete, setGameComplete] = useState('no');
-  let [gamePayload, setGamePayload] = useState({ displayBoard: initialDisplay });
+
+  let [gamePayload, setGamePayload] = useState({displayBoard: initialDisplay, missileStatus: 'Miss', computerGuess: 'Miss'});
+
   let [socket, setSocket] = useState(io.connect(serverUrl, {
     transports: ['websocket'],
     jsonp: false
@@ -67,6 +69,7 @@ export default function App(props) {
 
     socket.on('game-over', (payload) => {
       console.log('Winner: ', payload.winner);
+      // setGamePayload({ ...payload });
       setGameComplete(payload.winner);
       speak(`Game Over. Winner, ${payload.winner}`);
     });
@@ -81,7 +84,6 @@ export default function App(props) {
     startNewGame();
     socket.emit('new-game');
   };
-
 
   return (
     <Provider store={store}>
