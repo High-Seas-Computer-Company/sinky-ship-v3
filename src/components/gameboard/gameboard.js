@@ -84,6 +84,80 @@ export default function Board(props) {
         )}
       />
         <Text style={[styles.infoDisplay]}>Computer's shot is a {props.gamePayload.computerGuess}</Text>
+        <View
+          style={{
+            flexDirection: 'row',
+            height: 110,
+            width: 300,
+            padding: 5,
+            justifyContent: 'center',
+          }}>
+          <View
+            style={{
+              flexDirection: 'column',
+              height: 100,
+              width: 20,
+              margin: 10,
+            }}>
+            <View style={{ height: 20 }}/>
+            <View style={{ height: 20 }}/>
+            <View style={{ height: 20 }}/>
+            <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }}/>
+            <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }}/>
+          </View>
+          <View
+            style={{
+              flexDirection: 'column',
+              height: 100,
+              width: 20,
+              margin: 10,
+            }}>
+            <View style={{ height: 20 }}/>
+            <View style={{ height: 20 }}/>
+            <View style={{ height: 20 }}/>
+            <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }}/>
+            <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }}/>
+          </View>
+          <View
+            style={{
+              flexDirection: 'column',
+              height: 100,
+              width: 20,
+              margin: 10,
+            }}>
+            <View style={{ height: 20 }}/>
+            <View style={{ height: 20 }}/>
+            <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }}/>
+            <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }}/>
+            <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }}/>
+          </View>
+          <View
+            style={{
+              flexDirection: 'column',
+              height: 100,
+              width: 20,
+              margin: 10,
+            }}>
+            <View style={{ height: 20 }}/>
+            <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }}/>
+            <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }}/>
+            <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }}/>
+            <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }}/>
+          </View>
+          <View
+            style={{
+              flexDirection: 'column',
+              height: 100,
+              width: 20,
+              margin: 10,
+            }}>
+            <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }}/>
+            <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }}/>
+            <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }}/>
+            <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }}/>
+            <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }}/>
+          </View>
+        </View>
       {/* <Compass /> */}
     </>
   );
