@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
+
+// style
 import { StyleSheet, View, Text, TouchableOpacity, TouchableHighlight, Alert } from 'react-native';
 import { Button } from 'react-native-elements';
 import { FlatGrid } from 'react-native-super-grid';
-// import { Ionicons } from '@expo/vector-icons';
-// import { AntDesign } from '@expo/vector-icons';
-import Compass from '../compass/Compass.js';
-//import { guess } from '../actions/action-helpers.js'
+import { scale, verticalScale, moderateScale } from 'react-native-size-matters';
+
+// redux and components
 import { nextGuess } from '../actions/action-helpers.js';
+// import { guess } from '../actions/action-helpers.js'
+// import Compass from '../compass/Compass.js';
 
 let grid = function () {
   let gridArray = [];

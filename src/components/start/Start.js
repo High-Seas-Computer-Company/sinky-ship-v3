@@ -3,7 +3,7 @@ import { StyleSheet, View, FlatList, ActivityIndicator, Image } from 'react-nati
 import { NativeRouter, Route, Link, TouchableOpacity } from "react-router-native";
 import { Button, Text } from 'react-native-elements';
 import ButtonLink from './button/ButtonLink.js';
-
+import { scale, verticalScale, moderateScale } from 'react-native-size-matters';
 // import image from '../../../assets/pirateShip.jpg';
 
 
@@ -54,18 +54,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   pirateImage: {
-    width: 400,
-    height: 400,
+    width: scale(300),
+    // width: 400,
+    height: verticalScale(275),
+    // height: 400,
   },
   buttonOne: {
-    marginTop: 40,
+    marginTop: 10,
   },
   textStyle: {
-    width: 325,
+    width: scale(260),
+    // width: 325,
     textAlign: 'justify',
-    marginTop: 15,
+    marginTop: 10,
   },
   h4Style: {
-    marginTop: 20,
+    marginTop: 10,
   }
 });

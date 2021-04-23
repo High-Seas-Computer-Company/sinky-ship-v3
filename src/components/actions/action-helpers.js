@@ -47,14 +47,14 @@ export const nextGuess = (payload, value, displayBox, responseSocket) => {
   let boardCheck = checkBoard(payload.computerBoard, value);
   if (boardCheck.status === 'Hit') {
     console.log('Hitty-Hit');
-    payload.displayBoard[displayBox].value = 'red';
+    payload.displayBoard[displayBox].value = '#d29495';
     payload.missileStatus = 'Hitty Hit';
     console.log('HIT! YOU\'RE ON YOUR WAY TO SINKY SHIP');
     responseSocket.emit('response', payload);
     // return true;
   } else if (boardCheck.status === 'Miss') {
     console.log('Missy-Miss');
-    payload.displayBoard[displayBox].value = 'white';
+    payload.displayBoard[displayBox].value = '#b9ced5';
     payload.missileStatus = 'Missy Miss';
     console.log('MISS! YOU`LL HAVE TO AIM BETTER THAN THAT!');
     responseSocket.emit('response', payload);
