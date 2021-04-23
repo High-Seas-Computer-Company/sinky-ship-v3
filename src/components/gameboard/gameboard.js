@@ -9,7 +9,7 @@ import { nextGuess } from '../actions/action-helpers.js';
 
 // Components
 import { If } from '../if/If.js';
-// import Compass from '../compass/Compass.js';
+import Compass from '../compass/Compass.js';
 
 const grid = () => {
   const gridArray = [];
