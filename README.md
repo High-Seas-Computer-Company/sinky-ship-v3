@@ -35,6 +35,8 @@ Sinky Ship v3 is a React Native strategy game where the goal is to sinky the com
 # Screen Shots
 
 ![Home-Screen](./assets/sinky-ship-home.png)
+![Gameboard](./assets/gameboard.png)
+![Gameover](./assets/gameover.png)
 
 # Process Images
 
