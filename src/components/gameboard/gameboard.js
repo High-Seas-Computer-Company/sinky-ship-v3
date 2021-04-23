@@ -51,6 +51,7 @@ export default function Board(props) {
 
   return (
     <>
+        <Text style={[styles.infoDisplay]}>Your shot was a {props.gamePayload.missileStatus}</Text>
       {/* <Button title="Your Grid" /> */}
       <FlatGrid
         itemDimension={40}
@@ -79,6 +80,7 @@ export default function Board(props) {
 
         )}
       />
+        <Text style={[styles.infoDisplay]}>Computer's shot is a {props.gamePayload.computerGuess}</Text>
       {/* <Compass /> */}
     </>
   );
@@ -115,5 +117,21 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: 12,
     color: '#fff',
+  },
+  infoDisplay: {
+    padding: 2,
+    borderWidth: 0.5,
+    borderColor: '#3c2829',
+    borderRadius: 4,
+  },
+  Hit: {
+    fontSize: 16,
+    fontWeight: '400',
+    backgroundColor: '#d29495',
+  },
+  Miss: {
+    fontSize: 16,
+    fontWeight: '400',
+    backgroundColor: '#d29495',
   },
 });
