@@ -21,7 +21,6 @@ Sinky Ship v3 is a React Native strategy game where the goal is to sinky the com
 
 * As a user I would like to play against a computer opponent that is better than just choosing random selections and is harder to play against because it uses an algorithm for selecting targets
 
-
 # Developers
 
 * Carly Dekock
@@ -31,6 +30,27 @@ Sinky Ship v3 is a React Native strategy game where the goal is to sinky the com
 * William Moreno
 
 * Jason Dormier
+
+## Front-End GitHub repo [here](https://github.com/High-Seas-Computer-Company/sinky-ship-v3)
+
+## Back-End GitHub repo [here](https://github.com/High-Seas-Computer-Company/sinky-ship-v3-back-end)
+
+# How to Build
+
+* Clone the front-end repo
+* Run ```npm install```
+* Ensure you have an Expo account, and have the expo-cli downloaded
+* Run ```expo start``` to run a simulation of the React Native application
+
+# How to Run Locally
+
+* Clone down the back-end repo (found [here](https://github.com/High-Seas-Computer-Company/sinky-ship-v3-back-end))
+* Clone down the front-end repo
+* Run ```npm install``` for both
+* Set the ServerURL to be localhost
+* Run ```node hub.js``` in the back-end repo
+* Ensure you have an Expo account, and have the expo-cli downloaded
+* Run ```expo start``` to run a simulation of the React Native application
 
 # Screen Shots
 
@@ -69,7 +89,6 @@ Sinky Ship v3 is a React Native strategy game where the goal is to sinky the com
 [Medium](https://rossbulat.medium.com/react-hooks-managing-web-sockets-with-useeffect-and-usestate-2dfc30eeceec)
 
 [Socket.io](https://socket.io/docs/v4/index.html)
-
 
 # Credits
 
