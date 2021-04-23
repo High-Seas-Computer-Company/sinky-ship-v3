@@ -1,5 +1,7 @@
 import React from 'react';
 import { Header } from 'react-native-elements';
+
+// Components
 import LeftHeader from './headerComponents/Left.js';
 import RightHeader from './headerComponents/Right.js';
 
