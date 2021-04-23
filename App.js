@@ -69,7 +69,7 @@ const App = (props) => {
     });
 
     socket.on('game-over', (payload) => {
-      console.log('Winner: ', payload.winner);
+      // console.log('Winner: ', payload.winner);
       setGameComplete(payload.winner);
       speak(`Game Over. Winner, ${payload.winner}`);
     });
