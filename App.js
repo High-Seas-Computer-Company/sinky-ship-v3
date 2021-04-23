@@ -68,7 +68,7 @@ export default function App(props) {
     });
 
     socket.on('game-over', (payload) => {
-      console.log('Winner: ', payload.winner);
+      // console.log('Winner: ', payload.winner);
       // setGamePayload({ ...payload });
       setGameComplete(payload.winner);
       speak(`Game Over. Winner, ${payload.winner}`);
