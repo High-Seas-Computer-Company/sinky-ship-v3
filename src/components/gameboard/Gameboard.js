@@ -41,30 +41,18 @@ const taskRunner = (item, props) => {
 // Component
 const Board = (props) => {
 
-  let hitArray = ['red', 'white', 'white', 'white', 'grey', 'white', 'while', 'white', 'white', 'white', 'white', 'orange', 'white', 'white', 'white', 'white'];
-  // console.log('props: ', props);
-  let hitObject = { sl1: hitArray[0], sl2: hitArray[1], sc1: hitArray[2], sc2: hitArray[3], br1: hitArray[4], br2: hitArray[5], br3: hitArray[6], df1: hitArray[7], df2: hitArray[8], df3: hitArray[9], df4: hitArray[10], sg1: hitArray[11], sg2:hitArray[12], sg3: hitArray[13], sg4: hitArray[14], sg5: hitArray[15] };
 
   const [items, setItems] = useState(grid);
 
-  function playerShipHitter(array, guess) {
-    if(guess === 'Hit') {
-      for(let i = 0 ; i < array.length ; i++) {
-        if(array[i] !== 'red') {
-          hitArray[i] = 'red';
-          console.log(hitArray);
-          return hitArray;
-        }
-      }
-      
-    }
-    return;
-  }
 
   useEffect(() => {
     setItems(props.gamePayload.displayBoard);
-    playerShipHitter(hitArray, props.gamePayload.computerGuess);
+  }, []);
+
+  useEffect(() => {
+    setItems(props.gamePayload.displayBoard);
   }, [props.gamePayload]);
+
 
   return (
     <>
@@ -99,13 +87,6 @@ const Board = (props) => {
           padding: 5,
           justifyContent: 'center',
         }}>
-        <View
-          style={{
-            flexDirection: 'column',
-            height: 100,
-            width: 20,
-            margin: 10,
-          }}>
           <View
             style={{
               flexDirection: 'column',
@@ -113,11 +94,37 @@ const Board = (props) => {
               width: 20,
               margin: 10,
             }}>
-            <View style={{ height: 20 }}/>
-            <View style={{ height: 20 }}/>
-            <View style={{ height: 20 }}/>
-            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829', backgroundColor: hitObject.sl1 }}/>
-            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829', backgroundColor: hitObject.sl2 }}/>
+            <View style={{ height: 60 }}/>
+            {/* <View style={{ height: 20 }}/> */}
+            {/* <View style={{ height: 20 }}/> */}
+            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829' }}/>
+            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829' }}/>
+          </View>
+          <View
+            style={{
+              flexDirection: 'column',
+              height: 100,
+              width: 20,
+              margin: 10,
+            }}>
+            <View style={{ height: 60 }}/>
+            {/* <View style={{ height: 20 }}/>
+            <View style={{ height: 20 }}/> */}
+            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829' }}/>
+            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829' }}/>
+          </View>
+          <View
+            style={{
+              flexDirection: 'column',
+              height: 100,
+              width: 20,
+              margin: 10,
+            }}>
+            <View style={{ height: 40 }}/>
+            {/* <View style={{ height: 20 }}/> */}
+            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829' }}/>
+            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829' }}/>
+            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829' }}/>
           </View>
           <View
             style={{
@@ -127,10 +134,10 @@ const Board = (props) => {
               margin: 10,
             }}>
             <View style={{ height: 20 }}/>
-            <View style={{ height: 20 }}/>
-            <View style={{ height: 20 }}/>
-            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829', backgroundColor: hitObject.sc1 }}/>
-            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829', backgroundColor: hitObject.sc2 }}/>
+            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829' }}/>
+            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829' }}/>
+            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829' }}/>
+            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829' }}/>
           </View>
           <View
             style={{
@@ -139,92 +146,13 @@ const Board = (props) => {
               width: 20,
               margin: 10,
             }}>
-            <View style={{ height: 20 }}/>
-            <View style={{ height: 20 }}/>
-            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829', backgroundColor: hitObject.br1 }}/>
-            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829', backgroundColor: hitObject.br2 }}/>
-            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829', backgroundColor: hitObject.br3 }}/>
-          </View>
-          <View
-            style={{
-              flexDirection: 'column',
-              height: 100,
-              width: 20,
-              margin: 10,
-            }}>
-            <View style={{ height: 20 }}/>
-            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829', backgroundColor: hitObject.df1 }}/>
-            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829', backgroundColor: hitObject.df2 }}/>
-            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829', backgroundColor: hitObject.df3 }}/>
-            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829', backgroundColor: hitObject.df4 }}/>
-          </View>
-          <View
-            style={{
-              flexDirection: 'column',
-              height: 100,
-              width: 20,
-              margin: 10,
-            }}>
-            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829', backgroundColor: hitObject.sg1 }}/>
-            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829', backgroundColor: hitObject.sg2 }}/>
-            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829', backgroundColor: hitObject.sg3 }}/>
-            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829', backgroundColor: hitObject.sg4 }}/>
-            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829', backgroundColor: hitObject.sg5 }}/>
+            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829' }}/>
+            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829' }}/>
+            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829' }}/>
+            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829' }}/>
+            <View style={{ height: 20, borderWidth: 1, borderColor: '#3c2829' }}/>
           </View>
         </View>
-        <View
-          style={{
-            flexDirection: 'column',
-            height: 100,
-            width: 20,
-            margin: 10,
-          }}>
-          <View style={{ height: 20 }} />
-          <View style={{ height: 20 }} />
-          <View style={{ height: 20 }} />
-          <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }} />
-          <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }} />
-        </View>
-        <View
-          style={{
-            flexDirection: 'column',
-            height: 100,
-            width: 20,
-            margin: 10,
-          }}>
-          <View style={{ height: 20 }} />
-          <View style={{ height: 20 }} />
-          <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }} />
-          <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }} />
-          <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }} />
-        </View>
-        <View
-          style={{
-            flexDirection: 'column',
-            height: 100,
-            width: 20,
-            margin: 10,
-          }}>
-          <View style={{ height: 20 }} />
-          <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }} />
-          <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }} />
-          <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }} />
-          <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }} />
-        </View>
-        <View
-          style={{
-            flexDirection: 'column',
-            height: 100,
-            width: 20,
-            margin: 10,
-          }}>
-          <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }} />
-          <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }} />
-          <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }} />
-          <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }} />
-          <View style={{ height: 20, borderWidth: 1, borderColor: 'black' }} />
-        </View>
-      </View>
       {/* <Compass /> */}
     </>
   );
@@ -250,6 +178,12 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderColor: '#3c2829',
     borderRadius: 4,
+  },
+  hit: {
+    backgroundColor: '#d29495',
+  },
+  miss: {
+    backgroundColor: '#b9ced5',
   },
 });
 
